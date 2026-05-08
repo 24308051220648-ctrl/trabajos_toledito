@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problemas Secuenciales | Fatima</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .bg-gradient-custom {
+            background: radial-gradient(circle at top, #2e1065 0%, #020617 100%);
+        }
+        
+        /* Animación de pulso para el brillo del botón */
+        @keyframes glowing {
+            0% { box-shadow: 0 0 5px #9333ea; }
+            50% { box-shadow: 0 0 20px #a855f7; }
+            100% { box-shadow: 0 0 5px #9333ea; }
+        }
+        .animate-glow {
+            animation: glowing 2s infinite;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-custom text-white min-h-screen">
+
+    <nav class="bg-slate-950/50 backdrop-blur-md shadow-lg border-b border-purple-900/50">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+
+            <div class="flex items-center gap-3">
+                <h1 class="text-2xl font-extrabold tracking-tighter text-white">
+                    FATIMA <span class="text-purple-500">SAENZ</span>
+                </h1>
+            </div>
+
+            <a href="pagina2.html" class="relative group inline-block">
+                <div class="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl blur opacity-60 group-hover:opacity-100 transition duration-300"></div>
+                
+                <button class="relative bg-slate-950 px-6 py-3 rounded-xl flex items-center gap-3 leading-none border border-purple-500/50 group-hover:border-purple-400 transition duration-300">
+                    <span class="text-purple-100 font-black tracking-widest text-sm uppercase">Explorar Menú</span>
+                    
+                    <div class="bg-purple-600 p-1.5 rounded-lg group-hover:bg-purple-500 group-hover:rotate-[360deg] transition-all duration-500">
+                        <i class="fas fa-chevron-right text-xs"></i>
+                    </div>
+                </button>
+            </a>
+
+        </div>
+    </nav>
+
+    <main class="flex flex-col justify-center items-center py-12">
+        <div class="relative group">
+            <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-violet-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+            
+            <div class="relative bg-slate-900 rounded-2xl overflow-hidden shadow-2xl border border-purple-500/30 w-[350px] h-[400px] md:w-[500px]">
+                <img 
+                    src="gato.jpg"
+                    class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition duration-500"
+                    alt="Imagen de Fatima">
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>

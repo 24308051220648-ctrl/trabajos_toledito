@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resolutor de Problemas | Fatima</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .bg-gradient-custom {
+            background: radial-gradient(circle at top, #2e1065 0%, #020617 100%);
+        }
+        /* Estilo para los inputs para que combinen con el morado */
+        input:focus {
+            border-color: #a855f7 !important;
+            box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-custom text-white min-h-screen flex flex-col items-center">
+
+    <header class="w-full max-w-4xl border-2 border-purple-500 bg-slate-950/80 mt-10 p-5 text-center rounded-t-2xl backdrop-blur-sm">
+        <h1 class="text-3xl font-black tracking-tighter text-white">
+            RESOLUTOR <span class="text-purple-500">SECUENCIAL</span>
+        </h1>
+    </header>
+    
+    <main class="w-full max-w-4xl bg-slate-900/90 border-x-2 border-b-2 border-purple-900/50 rounded-b-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden mb-10">
+        
+        <nav class="w-full bg-slate-950/50 p-4 border-b border-purple-900/30 flex justify-between items-center">
+            <span class="text-purple-300/60 text-xs font-bold uppercase tracking-widest">Panel de Control</span>
+            <a href="pagina2.html" class="text-purple-500 hover:text-white transition-all transform hover:scale-110">
+                <i class="fas fa-house-user text-2xl"></i>
+            </a>
+        </nav>
+
+        <div class="p-10">
+            <label class="block text-sm font-bold text-purple-400 mb-2 ml-1">Selecciona un ejercicio:</label>
+            <select id="selector" onchange="mostrarProblema()" 
+                    class="w-full p-4 bg-slate-950 border-2 border-purple-900/50 rounded-xl outline-none text-white font-semibold mb-8 cursor-pointer focus:border-purple-500 transition-all">
+                <option value="0">--- Haz clic para elegir ---</option>
+                <option value="2.10">2.10 Pago CONAGUA (m³)</option>
+                <option value="2.11">2.11 Pago Luz CLS (KW)</option>
+                <option value="2.12">2.12 Descuento 20% + IVA 15%</option>
+                <option value="2.13">2.13 Ahorro Anual (15%)</option>
+                <option value="2.14">2.14 Viáticos Monterrey</option>
+                <option value="2.15">2.15 Potencia Eléctrica (P=V*I)</option>
+                <option value="2.16">2.16 Área de un Cuadrado</option>
+                <option value="2.17">2.17 Promedio Ponderado</option>
+                <option value="2.18">2.18 Tiempo de Vida</option>
+                <option value="2.19">2.19 Costo de Llamada</option>
+                <option value="2.20">2.20 Hotel "Cama Arena"</option>
+            </select>
+
+            <div class="h-[2px] bg-gradient-to-r from-transparent via-purple-500/50 to-transparent mb-10"></div>
+
+            <div id="pantalla-ejercicio" class="min-h-[300px] flex flex-col justify-center bg-slate-950/30 rounded-2xl border border-purple-900/20 p-6">
+                <div class="text-center">
+                    <div class="inline-block p-4 rounded-full bg-purple-900/20 mb-4">
+                        <i class="fas fa-terminal text-4xl text-purple-500 animate-pulse"></i>
+                    </div>
+                    <p class="text-slate-500 font-medium italic">Esperando selección del sistema...</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="pb-10 text-purple-300/30 text-xs font-bold tracking-widest uppercase">
+        Fatima Saenz • Computing Solutions 2026
+    </footer>
+
+    <script>
+        function mostrarProblema() {
+            const op = document.getElementById("selector").value;
+            const caja = document.getElementById("pantalla-ejercicio");
+            let contenido = "";
+
+            // Clases para los inputs para no repetir código
+            const inputStyle = "w-full p-4 bg-slate-950 rounded-xl border border-purple-900/50 mb-4 focus:outline-none focus:border-purple-500 transition-all font-semibold";
+            const btnStyle = "bg-purple-600 w-full py-4 rounded-xl font-extrabold hover:bg-purple-500 transition-all shadow-lg hover:shadow-purple-500/20 active:scale-95";
+
+            switch(op) {
+                case "2.10":
+                    contenido = `
+                        <h2 class="text-xl font-bold text-purple-400 mb-6 flex items-center gap-2"><i class="fas fa-tint"></i> CONAGUA</h2>
+                        <input type="number" id="v1" placeholder="Metros cúbicos" class="${inputStyle}">
+                        <input type="number" id="v2" placeholder="Costo por m³" class="${inputStyle}">
+                        <button onclick="calc210()" class="${btnStyle}">CALCULAR TOTAL</button>
+                    `;
+                    break;
+                case "2.12":
+                    contenido = `
+                        <h2 class="text-xl font-bold text-purple-400 mb-6 flex items-center gap-2"><i class="fas fa-tag"></i> Descuento e IVA</h2>
+                        <input type="number" id="v1" placeholder="Precio del artículo" class="${inputStyle}">
+                        <button onclick="calc212()" class="${btnStyle}">CALCULAR PRECIOS</button>
+                    `;
+                    break;
+                case "2.16":
+                    contenido = `
+                        <h2 class="text-xl font-bold text-purple-400 mb-6 flex items-center gap-2"><i class="fas fa-square"></i> Área de Cuadrado</h2>
+                        <input type="number" id="v1" placeholder="Medida del lado" class="${inputStyle}">
+                        <button onclick="calc216()" class="${btnStyle}">OBTENER ÁREA</button>
+                    `;
+                    break;
+                case "2.20":
+                    contenido = `
+                        <h2 class="text-xl font-bold text-purple-400 mb-6 flex items-center gap-2"><i class="fas fa-bed"></i> Hotel Cama Arena</h2>
+                        <input type="number" id="v1" placeholder="Número de días" class="${inputStyle}">
+                        <input type="number" id="v2" placeholder="Costo por noche" class="${inputStyle}">
+                        <button onclick="calc220()" class="${btnStyle}">CALCULAR ESTANCIA</button>
+                    `;
+                    break;
+                default:
+                    contenido = `<div class="text-center text-slate-500 italic">Selecciona un ejercicio para desplegar los campos.</div>`;
+            }
+
+            caja.innerHTML = contenido + `<div id="res" class="mt-8 p-5 bg-purple-600/10 border border-purple-500/50 rounded-xl hidden text-center animate-bounce-short"></div>`;
+        }
+
+        function calc210() {
+            const v1 = document.getElementById("v1").value;
+            const v2 = document.getElementById("v2").value;
+            mostrarRes(`El pago total es: <span class="text-purple-400">$${(v1 * v2).toFixed(2)}</span>`);
+        }
+
+        function calc212() {
+            const p = parseFloat(document.getElementById("v1").value);
+            const d = p * 0.80;
+            const f = d * 1.15;
+            mostrarRes(`Con desc: $${d.toFixed(2)} <br> <span class="text-2xl text-purple-400">Total: $${f.toFixed(2)}</span>`);
+        }
+
+        function calc216() {
+            const l = document.getElementById("v1").value;
+            mostrarRes(`Área: <span class="text-purple-400">${l * l} u²</span>`);
+        }
+
+        function calc220() {
+            const d = document.getElementById("v1").value;
+            const c = document.getElementById("v2").value;
+            mostrarRes(`Total a pagar: <span class="text-purple-400">$${d * c}</span>`);
+        }
+
+        function mostrarRes(texto) {
+            const r = document.getElementById("res");
+            r.innerHTML = `<p class="font-bold text-lg">${texto}</p>`;
+            r.classList.remove("hidden");
+        }
+    </script>
+
+    <style>
+        @keyframes bounce-short {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        .animate-bounce-short {
+            animation: bounce-short 0.5s ease-in-out;
+        }
+    </style>
+</body>
+</html>
